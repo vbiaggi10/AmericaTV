@@ -12,6 +12,19 @@ body {
   background-size: cover;
 }
 .form-login {
-  border-radius: 1rem
+  border-radius: 1rem;
+  width: 100%;
+}
+@media (min-width: 576px) { 
+  .form-login {
+    border-radius: 1rem;
+    width: 70%;
+  }
 }
 
+@media (min-width: 992px) { 
+  .form-login {
+    border-radius: 1rem;
+    width: 50%;
+  }
+}
