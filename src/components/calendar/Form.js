@@ -29,11 +29,15 @@ class Form extends Component {
       this.setState({ surchargeAmount: 0 });
     }
   }
+  handleClick(schedule){
+    this.setState({ schedule: schedule});
+    // console.log(this.state.schedule);
+  }
   render() {
     return (
       <div>
         <form className="form-data p-5" onSubmit={this.handleSubmit.bind(this)}>
-          <Mini hour={this.props.hour} />
+          <Mini hour={this.props.hour}  handleClick={this.handleClick.bind(this)}/>
           <div className="form-group">
             <label htmlFor="exampleSelect1" className="bmd-label-floating">Producto</label>
             <select className="form-control" id="exampleSelect1" onChange={this.handleChange.bind(this)}>
@@ -96,6 +100,7 @@ class Form extends Component {
         productPrice: this.state.productPrice,
         programPrice: this.props.price,
         surchargePrice: this.state.surchargeAmount,
+        schedule:this.state.schedule,
         totalPrice: this.myRef.current.value
       });
     } else {
