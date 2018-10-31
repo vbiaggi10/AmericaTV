@@ -41,7 +41,7 @@ class Calendar extends Component {
                     <th scope="row">{i < 10 ? ('0' + i) : i}:00 - {(i + 1) < 10 ? ('0' + (i + 1)) : (i + 1)}:00</th>
                     {
                       arrayDay.map((day, j) => {
-                        return (<td key={`day${j}`}><a href="#" id={i + "-" + day + "-" + data[day].name + "-" + data[day].price} onClick={this.handleClick.bind(this)}>{data[day].name}</a></td>)
+                        return (<td key={`day${j}`} className={`td text-secondary hour${i}`} id={i + "-" + day + "-" + data[day].name + "-" + data[day].price} onClick={this.handleClick.bind(this)}>{data[day].name}</td>)
                       })
                     }
                   </tr>
@@ -60,7 +60,6 @@ class Calendar extends Component {
     this.props.handleChangeStatus(true);
     const newTarget = e.target.id.split('-');
     const hour = (newTarget[0] < 10 ? ('0' + newTarget[0]) : newTarget[0]);
-    
     this.props.handleGoForm(hour, newTarget[1], newTarget[2], newTarget[3]);
   }
 }
