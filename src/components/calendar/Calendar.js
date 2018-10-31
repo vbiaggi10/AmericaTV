@@ -19,8 +19,8 @@ class Page404 extends Component {
 
   render() {
     return (
-      <div class="container bg-white">
-        <table class="table">
+      <div className="container bg-white">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Hora</th>
