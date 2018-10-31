@@ -11,7 +11,8 @@ class Form extends Component {
       productPrice: 0,
       surchargeAmount: 0,
       totalAmount: 0,
-      schedule:''
+      schedule:'',
+      clickedTH: false
     }
     this.myRef = React.createRef();
   }
@@ -31,10 +32,6 @@ class Form extends Component {
     } else {
       this.setState({ surchargeAmount: 0 });
     }
-  }
-  handleClick(schedule){
-    this.setState({ schedule: schedule});
-    // console.log(this.state.schedule);
   }
 
   render() {
@@ -92,19 +89,28 @@ class Form extends Component {
     this.setState({ productPrice: parseInt(newTarget[0]), productName: newTarget[1] });
   }
 
+  handleClick(schedule, value){
+    this.setState({ schedule: schedule, clickedTH: value});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.productPrice !== 0) {
       database.ref('booking/').push({
         name: this.props.name,
+        day: this.props.day,
+        hour: this.props.hour,
         productName: this.state.productName,
         productPrice: this.state.productPrice,
         programPrice: this.props.price,
         surchargePrice: this.state.surchargeAmount,
         schedule:this.state.schedule,
-        totalPrice: this.myRef.current.value
+        totalPrice: this.myRef.current.value,
+        clickedTH: this.state.clickedTH
       });
+      this.props.handleChangeStatus(false);
     } else {
+      this.props.handleChangeStatus(false);
       alert("seleccionar producto")
     }
   }
