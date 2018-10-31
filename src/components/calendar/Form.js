@@ -27,7 +27,7 @@ class Form extends Component {
     database.ref('/booking').once('value').then(snapshot => {
       Object.values(snapshot.val()).map(snap => {
         if (snap.day === this.props.day) {
-          this.setState({
+          return this.setState({
             booking: snap
           })
         }
@@ -46,9 +46,9 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mt-5">
         <form className="form-data p-5" onSubmit={this.handleSubmit.bind(this)}>
-          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)} booking={this.state.booking} handleGetLength={this.handleGetLength.bind(this)}/>
+          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)} booking={this.state.booking} />
           <div className="form-group">
             <label htmlFor="exampleSelect1" className="bmd-label-floating mb-0">
               Producto
@@ -77,83 +77,83 @@ class Form extends Component {
             </div>
           </div>
           <section className="section-disabled">
-          <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">Programa: </label>
-            <input
-              type="text"
-              className="form-control"
-              value={this.props.name}
-              disabled
-            />
-          </div>
-          <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">Fecha:</label>
-            <input
-              type="text"
-              className="form-control"
-              value={this.props.day}
-              disabled
-            />
-          </div>
-          <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">
-              Monto por producto:{" "}
-            </label>
-            <div className="input-group-prepend">
-              <p className="input-group-text">$</p>
+            <div className="input-group mb-3">
+              <label className="bmd-label-floating lb-nop">Programa: </label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.props.name}
+                disabled
+              />
             </div>
-            <input
-              type="text"
-              className="form-control in-nop"
-              value={this.state.productPrice}
-              disabled
-            />
-          </div>
-          <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">
-              Monto por programa:{" "}
-            </label>
-            <div className="input-group-prepend">
-              <p className="input-group-text">$</p>
+            <div className="input-group mb-3">
+              <label className="bmd-label-floating lb-nop">Fecha:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.props.day}
+                disabled
+              />
             </div>
-            <input
-              type="text"
-              className="form-control in-nop"
-              value={this.props.price}
-              disabled
-            />
-          </div>
-          <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">
-              Monto por recargo:{" "}
-            </label>
-            <div className="input-group-prepend">
-              <p className="input-group-text">$</p>
+            <div className="input-group mb-3">
+              <label className="bmd-label-floating lb-nop">
+                Monto por producto:{" "}
+              </label>
+              <div className="input-group-prepend">
+                <p className="input-group-text">$</p>
+              </div>
+              <input
+                type="text"
+                className="form-control in-nop"
+                value={this.state.productPrice}
+                disabled
+              />
             </div>
-            <input
-              type="text"
-              className="form-control in-nop"
-              value={this.state.surchargeAmount}
-              disabled
-            />
-          </div>
-          <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">Monto total: </label>
-            <div className="input-group-prepend">
-              <p className="input-group-text">$</p>
+            <div className="input-group mb-3">
+              <label className="bmd-label-floating lb-nop">
+                Monto por programa:{" "}
+              </label>
+              <div className="input-group-prepend">
+                <p className="input-group-text">$</p>
+              </div>
+              <input
+                type="text"
+                className="form-control in-nop"
+                value={this.props.price}
+                disabled
+              />
             </div>
-            <input
-              type="text"
-              className="form-control in-nop"
-              ref={this.myRef}
-              value={
-                parseInt(this.state.productPrice) +
-                parseInt(this.props.price) +
-                parseInt(this.state.surchargeAmount)
-              }
-              disabled
-            />
-          </div>
+            <div className="input-group mb-3">
+              <label className="bmd-label-floating lb-nop">
+                Monto por recargo:{" "}
+              </label>
+              <div className="input-group-prepend">
+                <p className="input-group-text">$</p>
+              </div>
+              <input
+                type="text"
+                className="form-control in-nop"
+                value={this.state.surchargeAmount}
+                disabled
+              />
+            </div>
+            <div className="input-group mb-3">
+              <label className="bmd-label-floating lb-nop">Monto total: </label>
+              <div className="input-group-prepend">
+                <p className="input-group-text">$</p>
+              </div>
+              <input
+                type="text"
+                className="form-control in-nop"
+                ref={this.myRef}
+                value={
+                  parseInt(this.state.productPrice) +
+                  parseInt(this.props.price) +
+                  parseInt(this.state.surchargeAmount)
+                }
+                disabled
+              />
+            </div>
           </section>
           <div className="form-check">
             <label>
@@ -212,17 +212,10 @@ class Form extends Component {
     }
   }
 
-  handleCancel(e){
+  handleCancel(e) {
     e.preventDefault();
     e.stopPropagation();
     this.props.handleChangeStatus(false);
-  }
-
-  handleGetLength(length){
-    console.log(length)
-    if(length === 6){
-      this.props.handleGetLength(true)
-    }
   }
 }
 export default Form;

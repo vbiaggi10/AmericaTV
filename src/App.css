@@ -123,6 +123,32 @@ body {
   cursor: no-drop;
 }
 
+.squard {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+}
+
+.bg-hs{
+  background-color: #b3b6e4dc;
+}
+
+.bg-hp{
+  background-color: #d1eeb9e7;
+}
+
+.bg-hsp{
+  background-color: #ffaa72d2;
+}
+
+.bg-nd{
+  background-color: #e8e8e8;
+}
+
+.table-container{
+  display: block !important;
+}
+
 @media (min-width: 576px) {
   .form-login {
     border-radius: 1rem;

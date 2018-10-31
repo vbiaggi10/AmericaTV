@@ -26,7 +26,6 @@ class MiniCalendar extends Component {
           ref.innerHTML = "<th>No disponible</th>";
         }
       })
-      this.props.handleGetLength(this.state.array.length);
     }
 
     return (
@@ -57,14 +56,10 @@ class MiniCalendar extends Component {
     );
   }
 
-
-
   click(index, targetID) {
     this.props.handleClick(targetID, true);
     this.setState({ activeIndex: index });
   }
-
-
 }
 
 export default MiniCalendar;

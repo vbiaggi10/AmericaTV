@@ -19,11 +19,9 @@ class Calendar extends Component {
       this.setState({ data: snapshot.val() })
     });
     database.ref('/booking').once('value').then(snapshot => {
-      // console.log(snapshot.val())
       const { arrayIdCalendar } = this.state;
       Object.values(snapshot.val()).map(snap => {
-        // console.log(snap.idCalendar)
-        arrayIdCalendar.push(snap.idCalendar)
+        return arrayIdCalendar.push(snap.idCalendar)
       })
       this.setState({
         arrayIdCalendar: arrayIdCalendar
@@ -32,9 +30,29 @@ class Calendar extends Component {
   }
 
   render() {
-    console.log(this.props.statusCalendar)
+    var array1 = this.state.arrayIdCalendar;
+    var array2 = arrayIDCalendar;
+
+    array2.forEach((arr2, i) => {
+      array1.forEach((arr1, j) => {
+        if (arr2 === arr1) {
+          console.log(i + " " + j);
+          return document.getElementById(arr1).style.background = "#e8e8e8";
+        }
+      })
+    })
+
     return (
-      <div className="container bg-white table-container d-flex justify-content-center">
+      <div className="container bg-white table-container d-flex justify-content-center mt-5">
+        <form className="mx-auto">
+          <fieldset>
+            <legend>Leyenda:</legend>
+            <div><div className="squard bg-hs"></div> : Horario estelar</div>
+            <div><div className="squard bg-hp"></div> : Horario premium</div>
+            <div><div className="squard bg-hsp"></div> : Horario super premium</div>
+            <div><div className="squard bg-nd"></div> : Algunos o todos no disponibles</div>
+          </fieldset>
+        </form>
         <table className="table-item table-striped">
           <thead>
             <tr>
@@ -58,7 +76,7 @@ class Calendar extends Component {
                       arrayDay.map((day, j) => {
                         const newID = i + "-" + day + "-" + data[day].name + "-" + data[day].price;
                         arrayIDCalendar.push(newID)
-                        return (<td ref={this.myRef} key={`day${j}`} className={`td text-secondary hour${i}`} id={newID} onClick={this.handleClick.bind(this)} handleGetLength={this.handleGetLength.bind(this)}>{data[day].name}</td>)
+                        return (<td ref={this.myRef} key={`day${j}`} className={`td text-secondary hour${i}`} id={newID} onClick={this.handleClick.bind(this)}>{data[day].name}</td>)
                       })
                     }
                   </tr>
@@ -78,10 +96,6 @@ class Calendar extends Component {
     const newTarget = e.target.id.split('-');
     const hour = (newTarget[0] < 10 ? ('0' + newTarget[0]) : newTarget[0]);
     this.props.handleGoForm(e.target.id, hour, newTarget[1], newTarget[2], newTarget[3]);
-  }
-
-  handleGetLength(asd){
-    // console.log(asd)
   }
 }
 
