@@ -7,11 +7,12 @@ class Form extends Component {
     super()
     this.state = {
       products: [],
+      booking: [],
       productName: '',
       productPrice: 0,
       surchargeAmount: 0,
       totalAmount: 0,
-      schedule:'',
+      schedule: '',
       clickedTH: false
     }
     this.myRef = React.createRef();
@@ -21,6 +22,16 @@ class Form extends Component {
       const arr = Object.values(snapshot.val().products);
       this.setState({
         products: arr
+      })
+    });
+
+    database.ref('/booking').once('value').then(snapshot => {
+      Object.values(snapshot.val()).map(snap => {
+        if (snap.day === this.props.day) {
+          this.setState({
+            booking: snap
+          })
+        }
       })
     });
     const hour = parseInt(this.props.hour);
@@ -38,7 +49,7 @@ class Form extends Component {
     return (
       <div>
         <form className="form-data p-5" onSubmit={this.handleSubmit.bind(this)}>
-          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)}/>
+          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)} booking={this.state.booking} />
           <div className="form-group">
             <label htmlFor="exampleSelect1" className="bmd-label-floating">Producto</label>
             <select className="form-control" id="exampleSelect1" onChange={this.handleChange.bind(this)}>
@@ -89,30 +100,34 @@ class Form extends Component {
     this.setState({ productPrice: parseInt(newTarget[0]), productName: newTarget[1] });
   }
 
-  handleClick(schedule, value){
-    this.setState({ schedule: schedule, clickedTH: value});
+  handleClick(schedule, value) {
+    this.setState({ schedule: schedule, clickedTH: value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.productPrice !== 0) {
-      database.ref('booking/').push({
-        name: this.props.name,
-        day: this.props.day,
-        hour: this.props.hour,
-        productName: this.state.productName,
-        productPrice: this.state.productPrice,
-        programPrice: this.props.price,
-        surchargePrice: this.state.surchargeAmount,
-        schedule:this.state.schedule,
-        totalPrice: this.myRef.current.value,
-        clickedTH: this.state.clickedTH
-      });
-      this.props.handleChangeStatus(false);
+    if (e.target.name === 'submit') {
+      if (this.state.productPrice !== 0) {
+        database.ref('booking/').push({
+          name: this.props.name,
+          day: this.props.day,
+          hour: this.props.hour,
+          productName: this.state.productName,
+          productPrice: this.state.productPrice,
+          programPrice: this.props.price,
+          surchargePrice: this.state.surchargeAmount,
+          schedule: this.state.schedule,
+          totalPrice: this.myRef.current.value,
+          clickedTH: this.state.clickedTH
+        });
+        this.props.handleChangeStatus(false);
+      } else {
+        alert("seleccionar producto")
+      }
     } else {
       this.props.handleChangeStatus(false);
-      alert("seleccionar producto")
     }
+
   }
 }
 

@@ -81,8 +81,18 @@ body {
 }
 
 .th:hover, .clicked {
-  background-color: #6e6e6e;
+  background-color: #ff5000;
   color: #f1f1f1;
+}
+
+.form-control[disabled]{
+  color: #949494;
+}
+
+.desactive, .desactive th:hover{
+  background-color: #6e6e6e !important;
+  color: #f1f1f1 !important;
+  cursor: no-drop;
 }
 
 @media (min-width: 576px) {
