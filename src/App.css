@@ -82,7 +82,13 @@ body {
 .th, .td {
   cursor: pointer;
 }
-
+.in-nop {
+  padding: 0rem;
+}
+.lb-nop {
+  margin: 1rem 0.5rem 1rem 0rem;
+  height: 1rem;
+}
 .th:hover, .clicked {
   background-color: #6e6e6e;
   color: #f1f1f1;
