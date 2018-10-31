@@ -6,4 +6,4 @@ const config = {
   storageBucket: "amerticatv.appspot.com",
   messagingSenderId: "708348304723"
 };
-firebase.initializeApp(config);
+window.firebase.initializeApp(config);

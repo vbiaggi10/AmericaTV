@@ -1,0 +1,74 @@
+[
+  {
+    "breakfast": [
+      {
+        "id": 1,
+        "name": "Café americano",
+        "price": 5
+      },
+      {
+        "id": 2,
+        "name": "Café con leche",
+        "price": 7
+      },
+      {
+        "id": 3,
+        "name": "Sandwich de jamón y queso",
+        "price": 5
+      },
+      {
+        "id": 4,
+        "name": "Jugo natural",
+        "price": 5
+      }
+    ],
+    "lunchdinner": {
+      "hamburguesas": [
+        {
+          "id": 5,
+          "name": "Hamburguesa simple",
+          "price": 10
+        },
+        {
+          "id": 6,
+          "name": "Hamburguesa doble",
+          "price": 15
+        }
+      ],
+      "acompañamientos": [
+        {
+          "id": 7,
+          "name": "Papas fritas",
+          "price": 5
+        },
+        {
+          "id": 8,
+          "name": "Aros de cebolla",
+          "price": 5
+        }
+      ],
+      "bebidas": [
+        {
+          "id": 9,
+          "name": "Agua 500ml",
+          "price": 5
+        },
+        {
+          "id": 10,
+          "name": "Agua 750ml",
+          "price": 8
+        },
+        {
+          "id": 11,
+          "name": "Gaseosa 500ml",
+          "price": 8
+        },
+        {
+          "id": 12,
+          "name": "Gaseosa 750ml",
+          "price": 10
+        }
+      ]
+    }
+  }
+]
