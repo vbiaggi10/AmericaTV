@@ -10,23 +10,23 @@ class Mini extends Component {
                         <td></td>
                     </tr>
                     <tr>
-                        <th scope="row">{this.props.hour}:10-{this.props.hour}:20</th>
-                        <td></td> 
-                    </tr>
-                    <tr>
-                        <th scope="row">{this.props.hour}:20-{this.props.hour}:30</th>
+                        <th scope="row">{this.props.hour}:10 - {this.props.hour}:20</th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th scope="row">{this.props.hour}:30-{this.props.hour}:40</th>
+                        <th scope="row">{this.props.hour}:20 - {this.props.hour}:30</th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th scope="row">{this.props.hour}:40-{this.props.hour}:50</th>
+                        <th scope="row">{this.props.hour}:30 - {this.props.hour}:40</th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th scope="row">{this.props.hour}:50-{this.props.hour}:60</th>
+                        <th scope="row">{this.props.hour}:40 - {this.props.hour}:50</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{this.props.hour}:50 - 0{parseInt(this.props.hour) + 1}:00</th>
                         <td></td>
                     </tr>
                 </tbody>

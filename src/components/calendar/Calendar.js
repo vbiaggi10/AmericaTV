@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const database = window.firebase.database();
 const arrayDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
-class Page404 extends Component {
+class Calendar extends Component {
   constructor() {
     super();
     this.state = {
@@ -37,11 +37,11 @@ class Page404 extends Component {
             {
               this.state.data.map((data, i) => {
                 return (
-                  <tr>
-                    <th scope="row">{i < 10 ? ('0' + i) : i}:00 - {(i+1) < 10 ? ('0' + (i+1)) : (i+1)}:00</th>
+                  <tr key={`data${i}`}>
+                    <th scope="row">{i < 10 ? ('0' + i) : i}:00 - {(i + 1) < 10 ? ('0' + (i + 1)) : (i + 1)}:00</th>
                     {
-                      arrayDay.map(day => {
-                        return (<td><a href="#" id={i + "-" + day + "-" + data[day].name + "-" + data[day].price} onClick={this.handleClick.bind(this)}>{data[day].name}</a></td>)
+                      arrayDay.map((day, j) => {
+                        return (<td key={`day${j}`}><a href="#" id={i + "-" + day + "-" + data[day].name + "-" + data[day].price} onClick={this.handleClick.bind(this)}>{data[day].name}</a></td>)
                       })
                     }
                   </tr>
@@ -55,13 +55,14 @@ class Page404 extends Component {
     );
   }
 
-  handleClick(e){
+  handleClick(e) {
     e.preventDefault();
     this.props.handleChangeStatus(true);
     const newTarget = e.target.id.split('-');
     const hour = (newTarget[0] < 10 ? ('0' + newTarget[0]) : newTarget[0]);
+    
     this.props.handleGoForm(hour, newTarget[1], newTarget[2], newTarget[3]);
   }
 }
 
-export default Page404;
+export default Calendar;
