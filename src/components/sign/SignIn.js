@@ -16,27 +16,27 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div class="container col-sm-12 col-md-6 text-white d-flex flex-column mt-5 mb-3 justify-content-center align-items-center">
-        <h3 class="">Conectémonos+</h3>
-        <p class="">EQUIPO COMERCIAL/CLIENTES</p>
-        <form class="bg-white text-black p-3 form-login needs-validation" onSubmit={this.handleSubmit.bind(this)} novalidate>
-          <img src="http://www.comercial.americatv.com.pe/images/load-america.gif" class="rounded mx-auto d-block" alt="logo" />
-          <div class="form-group">
-            <label for="email" class="bmd-label-floating">Coreo electronico</label>
-            <input type="email" class="form-control" id="email" value={this.state.email} onChange={this.handleChange.bind(this)} required />
-            <div class="invalid-feedback text-danger" id="if1">
+      <div className="container col-sm-12 col-md-6 text-white d-flex flex-column mt-5 mb-3 justify-content-center align-items-center">
+        <h3 className="">Conectémonos+</h3>
+        <p className="">EQUIPO COMERCIAL/CLIENTES</p>
+        <form className="bg-white text-black p-3 form-login needs-validation" onSubmit={this.handleSubmit.bind(this)} novalidate>
+          <img src="http://www.comercial.americatv.com.pe/images/load-america.gif" className="rounded mx-auto d-block" alt="logo" />
+          <div className="form-group">
+            <label for="email" className="bmd-label-floating">Coreo electronico</label>
+            <input type="email" className="form-control" id="email" value={this.state.email} onChange={this.handleChange.bind(this)} required />
+            <div className="invalid-feedback text-danger" id="if1">
               Email invalido
           </div>
           </div>
-          <div class="form-group">
-            <label for="password" class="bmd-label-floating">Contraseña</label>
-            <input type="password" class="form-control" id="password" value={this.state.password} onChange={this.handleChange.bind(this)} required />
-            <div class="invalid-feedback text-danger" id="if2">
+          <div className="form-group">
+            <label for="password" className="bmd-label-floating">Contraseña</label>
+            <input type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange.bind(this)} required />
+            <div className="invalid-feedback text-danger" id="if2">
               Contraseña invalida
           </div>
           </div>
-          <div class="form-group m-0 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary" id="submit">Ingresar</button>
+          <div className="form-group m-0 d-flex justify-content-center">
+            <button type="submit" className="btn btn-primary" id="submit">Ingresar</button>
           </div>
         </form>
       </div>

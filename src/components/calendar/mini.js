@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Mini extends Component {
     render() {
         return (
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <tbody>
                     <tr>
                         <th scope="row">{this.props.hour}:00 - {this.props.hour}:10</th>
