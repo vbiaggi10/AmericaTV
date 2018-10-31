@@ -93,7 +93,7 @@ body {
   height: 1rem;
 }
 .th:hover, .clicked {
-  background-color: #6e6e6e;
+  background-color: #ff5000;
   color: #f1f1f1;
 }
 .tablemin-title {
@@ -113,7 +113,17 @@ body {
   justify-content: center;
 }
 
-@media (min-width: 576px) { 
+.form-control[disabled]{
+  color: #949494;
+}
+
+.desactive, .desactive th:hover{
+  background-color: #6e6e6e !important;
+  color: #f1f1f1 !important;
+  cursor: no-drop;
+}
+
+@media (min-width: 576px) {
   .form-login {
     border-radius: 1rem;
     width: 70%;

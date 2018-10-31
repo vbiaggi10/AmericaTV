@@ -6,25 +6,33 @@ class Form extends Component {
     super();
     this.state = {
       products: [],
-      productName: "",
+      booking: [],
+      productName: '',
       productPrice: 0,
       surchargeAmount: 0,
       totalAmount: 0,
-      schedule: "",
+      schedule: '',
       clickedTH: false
     };
     this.myRef = React.createRef();
   }
   componentDidMount() {
-    database
-      .ref("/agency")
-      .once("value")
-      .then(snapshot => {
-        const arr = Object.values(snapshot.val().products);
-        this.setState({
-          products: arr
-        });
-      });
+    database.ref('/agency').once('value').then(snapshot => {
+      const arr = Object.values(snapshot.val().products);
+      this.setState({
+        products: arr
+      })
+    });
+
+    database.ref('/booking').once('value').then(snapshot => {
+      Object.values(snapshot.val()).map(snap => {
+        if (snap.day === this.props.day) {
+          this.setState({
+            booking: snap
+          })
+        }
+      })
+    });
     const hour = parseInt(this.props.hour);
     if (hour >= 12 && hour < 16) {
       this.setState({ surchargeAmount: this.props.price * 0.05 });
@@ -38,11 +46,8 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <form className="form-data p-4" onSubmit={this.handleSubmit.bind(this)}>
-          <Mini
-            hour={this.props.hour}
-            handleClick={this.handleClick.bind(this)}
-          />
+        <form className="form-data p-5" onSubmit={this.handleSubmit.bind(this)}>
+          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)} booking={this.state.booking} />
           <div className="form-group">
             <label htmlFor="exampleSelect1" className="bmd-label-floating mb-0">
               Producto
@@ -160,22 +165,8 @@ class Form extends Component {
               ACEPTO LOS TERMINOS Y CONDICIONES
             </label>
           </div>
-          <div class="btn-container">
-          <button
-            type="submit"
-            className="btn btn-outline-danger btn-login"
-            name="cancel"
-          >
-            CANCELAR
-          </button>
-          <button
-            type="submit"
-            className="btn btn-raised btn-success btn-login"
-            name="submit"
-          >
-            ENVIAR
-          </button>
-          </div>
+          <button type="submit" className="btn btn-raised btn-warning btn-login" name="cancel" onClick={this.handleCancel.bind(this)}>Cancelar</button>
+          <button type="submit" className="btn btn-raised btn-success btn-login" name="submit">Enviar</button>
         </form>
       </div>
     );
@@ -197,25 +188,33 @@ class Form extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.productPrice !== 0) {
-      database.ref("booking/").push({
-        name: this.props.name,
-        day: this.props.day,
-        hour: this.props.hour,
-        productName: this.state.productName,
-        productPrice: this.state.productPrice,
-        programPrice: this.props.price,
-        surchargePrice: this.state.surchargeAmount,
-        schedule: this.state.schedule,
-        totalPrice: this.myRef.current.value,
-        clickedTH: this.state.clickedTH
-      });
-      this.props.handleChangeStatus(false);
-    } else {
-      this.props.handleChangeStatus(false);
-      const if3 = document.querySelector("#if3");
-      if3.style.display = "block";
+    if (Object.values(e.target)[9].name === 'submit') {
+      if (this.state.productPrice !== 0) {
+        database.ref('booking/').push({
+          name: this.props.name,
+          day: this.props.day,
+          hour: this.props.hour,
+          productName: this.state.productName,
+          productPrice: this.state.productPrice,
+          programPrice: this.props.price,
+          surchargePrice: this.state.surchargeAmount,
+          schedule: this.state.schedule,
+          totalPrice: this.myRef.current.value,
+          clickedTH: this.state.clickedTH
+        });
+        this.props.handleChangeStatus(false);
+      } else {
+        const if3 = document.querySelector("#if3");
+        if3.style.display = "block";
+      }
     }
+  }
+
+  handleCancel(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.handleChangeStatus(false);
+
   }
 }
 export default Form;
