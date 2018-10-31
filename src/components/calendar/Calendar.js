@@ -59,7 +59,7 @@ class Page404 extends Component {
     e.preventDefault();
     this.props.handleChangeStatus(true);
     const newTarget = e.target.id.split('-');
-    const hour = (newTarget[0] < 10 ? ('0' + newTarget[0]) : newTarget[0])+":00";
+    const hour = (newTarget[0] < 10 ? ('0' + newTarget[0]) : newTarget[0]);
     this.props.handleGoForm(hour, newTarget[1], newTarget[2], newTarget[3]);
   }
 }
