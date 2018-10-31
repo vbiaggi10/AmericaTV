@@ -70,8 +70,9 @@ class Form extends Component {
               Debes ingresar un producto
             </div>
           </div>
-          <div className="form-group">
-            <label className="bmd-label-floating">Programa</label>
+          <section class="section-disabled">
+          <div className="input-group mb-3">
+            <label className="bmd-label-floating lb-nop">Programa: </label>
             <input
               type="text"
               className="form-control"
@@ -79,8 +80,8 @@ class Form extends Component {
               disabled
             />
           </div>
-          <div className="form-group">
-            <label className="bmd-label-floating">Fecha</label>
+          <div className="input-group mb-3">
+            <label className="bmd-label-floating lb-nop">Fecha:</label>
             <input
               type="text"
               className="form-control"
@@ -89,7 +90,9 @@ class Form extends Component {
             />
           </div>
           <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">Monto por producto: </label>
+            <label className="bmd-label-floating lb-nop">
+              Monto por producto:{" "}
+            </label>
             <div class="input-group-prepend">
               <p class="input-group-text">$</p>
             </div>
@@ -101,7 +104,9 @@ class Form extends Component {
             />
           </div>
           <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">Monto por programa: </label>
+            <label className="bmd-label-floating lb-nop">
+              Monto por programa:{" "}
+            </label>
             <div class="input-group-prepend">
               <p class="input-group-text">$</p>
             </div>
@@ -113,7 +118,9 @@ class Form extends Component {
             />
           </div>
           <div className="input-group mb-3">
-            <label className="bmd-label-floating lb-nop">Monto por recargo: </label>
+            <label className="bmd-label-floating lb-nop">
+              Monto por recargo:{" "}
+            </label>
             <div class="input-group-prepend">
               <p class="input-group-text">$</p>
             </div>
@@ -141,6 +148,7 @@ class Form extends Component {
               disabled
             />
           </div>
+          </section>
           <div className="form-check">
             <label>
               <input
@@ -152,6 +160,7 @@ class Form extends Component {
               ACEPTO LOS TERMINOS Y CONDICIONES
             </label>
           </div>
+          <div class="btn-container">
           <button
             type="submit"
             className="btn btn-outline-danger btn-login"
@@ -166,6 +175,7 @@ class Form extends Component {
           >
             ENVIAR
           </button>
+          </div>
         </form>
       </div>
     );

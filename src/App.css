@@ -94,8 +94,22 @@ body {
   color: #f1f1f1;
 }
 .tablemin-title {
-  padding: 0rem 8rem;
+  padding: 0rem 11.5rem;
 }
+.form-control:disabled {
+  background-color: #fbfbfb;
+}
+.section-disabled {
+  background-color: #fbfbfb;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0rem;
+  border-radius: 20px;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 576px) { 
   .form-login {
     border-radius: 1rem;
