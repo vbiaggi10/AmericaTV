@@ -17,15 +17,13 @@ const handleGetDataCalendar = () => {
         ancla.textContent = element[day].name;
         td1.appendChild(ancla);
         return (tr1.appendChild(td1))
-        //   })}
       })
-
-
       getTbody.appendChild(tr1);
       arrayDay.map(day => {
         document.getElementById(`${i + "-" + day + "-" + element[day].name + "-" + element[day].price}`).addEventListener('click', e => {
-          console.log("hola");
-
+          console.log(e.target.id);
+          window.location.href = 'form.html';
+          handleGetData()
         })
       })
     });
