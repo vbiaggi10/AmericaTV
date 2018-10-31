@@ -88,7 +88,7 @@ class Form extends Component {
               <input type="checkbox" className="form-check-input" caria-label="Checkbox for following text input" /> Acepto los términos y condiciones
             </label>
           </div>
-          <button type="submit" className="btn btn-raised btn-warning btn-login" name="cancel">Cancelar</button>
+          <button type="submit" className="btn btn-raised btn-warning btn-login" name="cancel" onClick={this.handleCancel.bind(this)}>Cancelar</button>
           <button type="submit" className="btn btn-raised btn-success btn-login" name="submit">Enviar</button>
         </form>
       </div>
@@ -106,7 +106,7 @@ class Form extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (e.target.name === 'submit') {
+    if (Object.values(e.target)[9].name === 'submit') {
       if (this.state.productPrice !== 0) {
         database.ref('booking/').push({
           name: this.props.name,
@@ -124,9 +124,13 @@ class Form extends Component {
       } else {
         alert("seleccionar producto")
       }
-    } else {
-      this.props.handleChangeStatus(false);
     }
+  }
+
+  handleCancel(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.handleChangeStatus(false);
 
   }
 }
