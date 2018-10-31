@@ -57,7 +57,10 @@ class Page404 extends Component {
 
   handleClick(e){
     e.preventDefault();
-    console.log(e.target.id)
+    this.props.handleChangeStatus(true);
+    const newTarget = e.target.id.split('-');
+    const hour = (newTarget[0] < 10 ? ('0' + newTarget[0]) : newTarget[0])+":00";
+    this.props.handleGoForm(hour, newTarget[1], newTarget[2], newTarget[3]);
   }
 }
 
