@@ -17,7 +17,7 @@ class SignIn extends Component {
   render() {
     return (
       <div className="container col-sm-12 col-md-6 text-white d-flex flex-column mt-5 mb-3 justify-content-center align-items-center">
-        <h3 className="">Conectémonos+</h3>
+        <h2 className="">Conectémonos+</h2>
         <p className="">EQUIPO COMERCIAL/CLIENTES</p>
         <form className="bg-white text-black p-3 form-login needs-validation" onSubmit={this.handleSubmit.bind(this)} novalidate>
           <img src="http://www.comercial.americatv.com.pe/images/load-america.gif" className="rounded mx-auto d-block img-login" alt="logo" />
@@ -48,16 +48,24 @@ class SignIn extends Component {
     database.ref('/agency').once('value').then(snapshot => {
       if (snapshot.val().email === this.state.email && snapshot.val().password === this.state.password)
         this.props.handleChangeStatus(true)
-      else
-        alert("Correo electrónico o contraseña invalida");
+      else{
+        const if1= document.querySelector('#if1');
+        const if2= document.querySelector('#if2');
+        if1.style.display="block";
+        if2.style.display="block";
+      }
     });
   }
 
   handleChange(e) {
+    const if1= document.querySelector('#if1');
+    const if2= document.querySelector('#if2');
     if (e.target.id === 'email') {
-      this.setState({ email: e.target.value })
+      this.setState({ email: e.target.value });
+      if1.style.display="none";
     } else if (e.target.id === 'password') {
-      this.setState({ password: e.target.value })
+      this.setState({ password: e.target.value });
+      if2.style.display="none";
     }
   }
 }

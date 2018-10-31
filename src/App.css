@@ -42,6 +42,9 @@ body {
   background-color: #f1f1f1;
   
 }
+.form-container {
+  width: 45rem;
+}
 @media (min-width: 576px) { 
   .form-login {
     border-radius: 1rem;

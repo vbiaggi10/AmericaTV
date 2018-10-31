@@ -19,7 +19,7 @@ class Form extends Component {
   }
   render() {
     return (
-      <div>
+      <div class="form-container">
         <form className="form-data p-5">
           <Mini hour={this.props.hour} />
           <div class="form-group">
@@ -61,8 +61,12 @@ class Form extends Component {
               <input type="checkbox" aria-label="Checkbox for following text input"/> Acepto los términos y condiciones 
             </label>
           </div>
-          <button class="btn btn-raised btn-warning btn-login">Cancelar</button>
-          <button type="submit" class="btn btn-raised btn-success btn-login">Enviar</button>
+          <div>
+            <button type="submit" class="btn btn-raised btn-success btn-login">Enviar</button>
+            <button class="btn btn-outline-secondary btn-login">Cancelar</button>
+          </div>
+          
+         
         </form>
       </div>
     );
