@@ -9,7 +9,9 @@ class Form extends Component {
       productName: '',
       productPrice: 0,
       surchargeAmount: 0,
-      totalAmount: 0
+      totalAmount: 0,
+      schedule:'',
+      clickedTH: false
     }
     this.myRef = React.createRef();
   }
@@ -29,17 +31,14 @@ class Form extends Component {
       this.setState({ surchargeAmount: 0 });
     }
   }
-  handleClick(schedule){
-    this.setState({ schedule: schedule});
-    // console.log(this.state.schedule);
-  }
+
   render() {
     return (
       <div>
-        <form className="form-data p-5" onSubmit={this.handleSubmit.bind(this)}>
-          <Mini hour={this.props.hour}  handleClick={this.handleClick.bind(this)}/>
+        <form className="form-data p-4" onSubmit={this.handleSubmit.bind(this)}>
+          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)}/>
           <div className="form-group">
-            <label htmlFor="exampleSelect1" className="bmd-label-floating">Producto</label>
+            <label htmlFor="exampleSelect1" className="bmd-label-floating">PRODUCTO</label>
             <select className="form-control" id="exampleSelect1" onChange={this.handleChange.bind(this)}>
               <option disabled selected>Selecciona una opción</option>
               {this.state.products.map((element, i) => {
@@ -51,61 +50,71 @@ class Form extends Component {
           </div>
           </div>
           <div className="form-group">
-            <label className="bmd-label-floating">Programa</label>
+            <label className="bmd-label-floating">PROGRAMA</label>
             <input type="text" className="form-control" value={this.props.name} disabled />
           </div>
           <div className="form-group">
-            <label className="bmd-label-floating">Fecha</label>
+            <label className="bmd-label-floating">FECHA</label>
             <input type="text" className="form-control" value={this.props.day} disabled />
           </div>
           <div className="form-group">
-            <label className="bmd-label-floating">Monto por producto</label>
+            <label className="bmd-label-floating">MONTO POR PRODUCTO</label>
             <input type="text" className="form-control" value={this.state.productPrice} disabled />
           </div>
           <div className="form-group">
-            <label className="bmd-label-floating">Monto por programa</label>
+            <label className="bmd-label-floating">MONTO POR PROGRAMA</label>
             <input type="text" className="form-control" value={this.props.price} disabled />
           </div>
           <div className="form-group">
-            <label className="bmd-label-floating">Monto por recargo</label>
+            <label className="bmd-label-floating">MONTO POR RECARGO</label>
             <input type="text" className="form-control" value={this.state.surchargeAmount} disabled />
           </div>
           <div className="form-group">
-            <label className="bmd-label-floating">Monto total</label>
+            <label className="bmd-label-floating">MONTO TOTAL</label>
             <input type="text" className="form-control" ref={this.myRef} value={(parseInt(this.state.productPrice) + parseInt(this.props.price) + parseInt(this.state.surchargeAmount))} disabled />
           </div>
           <div className="form-check">
             <label>
-              <input type="checkbox" className="form-check-input" caria-label="Checkbox for following text input" required/> Acepto los términos y condiciones
+
+              <input type="checkbox" className="form-check-input" caria-label="Checkbox for following text input" required/> ACEPTO LOS TERMINOS Y CONDICIONES
+
             </label>
           </div>
-          <button type="submit" className="btn btn-raised btn-warning btn-login" name="cancel">Cancelar</button>
-          <button type="submit" className="btn btn-raised btn-success btn-login" name="submit">Enviar</button>
+          <button type="submit" className="btn btn-outline-danger btn-login" name="cancel">CANCELAR</button>
+          <button type="submit" className="btn btn-raised btn-success btn-login" name="submit">ENVIAR</button>
         </form>
       </div>
     );
   }
+
   handleChange(e) {
-    const if3= document.querySelector('#if3');
     const newTarget = e.target.value.split('-');
     this.setState({ productPrice: parseInt(newTarget[0]), productName: newTarget[1] });
-    if3.style.display="none";  
   }
+
+  handleClick(schedule, value){
+    this.setState({ schedule: schedule, clickedTH: value});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.productPrice !== 0) {
       database.ref('booking/').push({
         name: this.props.name,
+        day: this.props.day,
+        hour: this.props.hour,
         productName: this.state.productName,
         productPrice: this.state.productPrice,
         programPrice: this.props.price,
         surchargePrice: this.state.surchargeAmount,
         schedule:this.state.schedule,
-        totalPrice: this.myRef.current.value
+        totalPrice: this.myRef.current.value,
+        clickedTH: this.state.clickedTH
       });
+      this.props.handleChangeStatus(false);
     } else {
-      const if3= document.querySelector('#if3');
-      if3.style.display="block";
+      this.props.handleChangeStatus(false);
+      alert("seleccionar producto")
     }
   }
 }

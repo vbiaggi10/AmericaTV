@@ -1,36 +1,47 @@
 import React, { Component } from 'react';
+import TrData from './TrData';
 
-class Mini extends Component {
-  click(e) {
-    this.props.handleClick(e.target.id)
+class MiniCalendar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      activeIndex: null
+    }
   }
+
   render() {
     return (
-      <table className="table table-striped ">
+      <table className="table table-striped">
         <tbody>
+        <caption class="text-center tablemin-title">ESCOGER HORARIO</caption>
           <tr>
-            <th className="th" scope="row" id={`${this.props.hour}:00 - ${this.props.hour}:10`} onClick={this.click.bind(this)}>{this.props.hour}:00 - {this.props.hour}:10</th>
+            <TrData index={0} isActive={this.state.activeIndex === 0} id={`${this.props.hour}:00 - ${this.props.hour}:10`} onClick={this.click.bind(this)} name={`${this.props.hour}:00 - ${this.props.hour}:10`} />
           </tr>
           <tr>
-            <th className="th" scope="row" id={`${this.props.hour}:10 - ${this.props.hour}:20`} onClick={this.click.bind(this)}>{this.props.hour}:10 - {this.props.hour}:20</th>
+            <TrData index={1} isActive={this.state.activeIndex === 1} id={`${this.props.hour}:10 - ${this.props.hour}:20`} onClick={this.click.bind(this)} name={`${this.props.hour}:10 - ${this.props.hour}:20`} />
           </tr>
           <tr>
-            <th className="th" scope="row" id={`${this.props.hour}:20 - ${this.props.hour}:30`} onClick={this.click.bind(this)}>{this.props.hour}:20 - {this.props.hour}:30</th>
+            <TrData index={2} isActive={this.state.activeIndex === 2} id={`${this.props.hour}:20 - ${this.props.hour}:30`} onClick={this.click.bind(this)} name={`${this.props.hour}:20 - ${this.props.hour}:30`} />
           </tr>
           <tr>
-            <th className="th" scope="row" id={`${this.props.hour}:30 - ${this.props.hour}:40`} onClick={this.click.bind(this)}>{this.props.hour}:30 - {this.props.hour}:40</th>
+            <TrData index={3} isActive={this.state.activeIndex === 3} id={`${this.props.hour}:30 - ${this.props.hour}:40`} onClick={this.click.bind(this)} name={`${this.props.hour}:30 - ${this.props.hour}:40`} />
           </tr>
           <tr>
-            <th className="th" scope="row" id={`${this.props.hour}:40 - ${this.props.hour}:50`} onClick={this.click.bind(this)}>{this.props.hour}:40 - {this.props.hour}:50</th>
+            <TrData index={4} isActive={this.state.activeIndex === 4} id={`${this.props.hour}:40 - ${this.props.hour}:50`} onClick={this.click.bind(this)} name={`${this.props.hour}:40 - ${this.props.hour}:50`} />
           </tr>
           <tr>
-            <th className="th" scope="row" id={`${this.props.hour}:50 - 0${parseInt(this.props.hour) + 1}:00`} onClick={this.click.bind(this)}>{this.props.hour}:50 - 0{parseInt(this.props.hour) + 1}:00</th>
+            <TrData index={5} isActive={this.state.activeIndex === 5} id={`${this.props.hour}:50 - ${((parseInt(this.props.hour) + 1) < 10 ? "0" : "") + (parseInt(this.props.hour) + 1)}:00`} onClick={this.click.bind(this)} name={`${this.props.hour}:50 - ${((parseInt(this.props.hour) + 1) < 10 ? "0" : "") + (parseInt(this.props.hour) + 1)}:00`} />
           </tr>
         </tbody>
 
       </table>
-    )
+    );
+  }
+
+  click(index, targetID) {
+    this.props.handleClick(targetID, true)
+    this.setState({ activeIndex: index })
   }
 }
 
-export default Mini;
+export default MiniCalendar;
