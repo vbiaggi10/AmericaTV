@@ -1,73 +1,68 @@
 import React, { Component } from 'react';
+import Mini from './mini'
+const database = window.firebase.database();
 
 class Form extends Component {
+  constructor() {
+    super()
+    this.state = {
+      products: []
+    }
+  }
+  componentDidMount() {
+    database.ref('/agency').once('value').then(snapshot => {
+      const arr = Object.values(snapshot.val().products);
+      this.setState({
+        products: arr
+      })
+    });
+  }
   render() {
     return (
       <div>
         <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1" class="bmd-label-floating">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" />
-            <span class="bmd-help">We'll never share your email with anyone else.</span>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1" class="bmd-label-floating">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" />
-          </div>
-          <div class="form-group">
-            <label for="exampleSelect1" class="bmd-label-floating">Example select</label>
-            <select class="form-control" id="exampleSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+          <Mini hour={this.props.hour} />
+          <div className="form-group">
+            <label for="exampleSelect1" className="bmd-label-floating">Producto</label>
+            <select className="form-control" id="exampleSelect1">
+              {this.state.products.map(element => {
+                return (<option>{element.name}</option>)
+              })}
             </select>
           </div>
-          <div class="form-group">
-            <label for="exampleSelect2" class="bmd-label-floating">Example multiple select</label>
-            <select multiple class="form-control" id="exampleSelect2">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+          <div className="form-group">
+            <label for="exampleSelect2" className="bmd-label-floating">Programa</label>
+            <input type="name" classNameName="form-control" disabled>{this.props.name}</input>
           </div>
-          <div class="form-group">
-            <label for="exampleTextarea" class="bmd-label-floating">Example textarea</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+          <div className="form-group">
+            <label for="exampleTextarea" className="bmd-label-floating">Fecha</label>
+            <input type="name" classNameName="form-control" disabled>{this.props.day} {this.props.hour}</input>
           </div>
-          <div class="form-group">
-            <label for="exampleInputFile" class="bmd-label-floating">File input</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" />
-            <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+          <div className="form-group">
+            <label for="exampleInputFile" className="bmd-label-floating">Monto por producto</label>
+            <input type="name" classNameName="form-control" disabled>---</input>
           </div>
-          <div class="radio">
+          <div className="form-group">
+            <label for="exampleInputFile" className="bmd-label-floating">Monto por programa</label>
+            <input type="name" classNameName="form-control" disabled>{this.props.price}</input>
+          </div>
+          <div className="form-group">
+            <label for="exampleInputFile" className="bmd-label-floating">Monto por recargo</label>
+            <input type="name" classNameName="form-control" disabled>---</input>
+          </div>
+          <div className="form-group">
+            <label for="exampleInputFile" className="bmd-label-floating">Monto total</label>
+            <input type="name" classNameName="form-control" disabled>---</input>
+          </div>
+          
+          
+          <div className="checkbox">
             <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
-              Option one is this and that&mdash;be sure to include why it's great
+              <input type="checkbox" /> Acepto los términos y condiciones 
             </label>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-              Option two can be something else and selecting it will deselect option one
-            </label>
-          </div>
-          <div class="radio disabled">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled />
-              Option three is disabled
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" /> Check me out
-            </label>
-          </div>
-          <button class="btn btn-default">Cancel</button>
-          <button type="submit" class="btn btn-primary btn-raised">Submit</button>
+          <button className="btn btn-default">Cancelar</button>
+          <button type="submit" className="btn btn-primary btn-raised">Enviar</button>
         </form>
       </div>
     );
