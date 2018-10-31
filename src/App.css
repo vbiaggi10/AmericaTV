@@ -38,6 +38,10 @@ body {
 .row-table {
   margin: 0rem auto;
 }
+.form-data {
+  background-color: #f1f1f1;
+  
+}
 @media (min-width: 576px) { 
   .form-login {
     border-radius: 1rem;

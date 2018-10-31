@@ -20,7 +20,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form className="form-data p-5">
           <Mini hour={this.props.hour} />
           <div class="form-group">
             <label for="exampleSelect1" class="bmd-label-floating">Producto</label>
@@ -58,11 +58,11 @@ class Form extends Component {
           
           <div class="checkbox">
             <label>
-              <input type="checkbox" /> Acepto los términos y condiciones 
+              <input type="checkbox" aria-label="Checkbox for following text input"/> Acepto los términos y condiciones 
             </label>
           </div>
-          <button class="btn btn-default">Cancelar</button>
-          <button type="submit" class="btn btn-primary btn-raised">Submit</button>
+          <button class="btn btn-raised btn-warning btn-login">Cancelar</button>
+          <button type="submit" class="btn btn-raised btn-success btn-login">Enviar</button>
         </form>
       </div>
     );
