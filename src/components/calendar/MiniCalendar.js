@@ -24,8 +24,9 @@ class MiniCalendar extends Component {
       })
     }
     return (
-      <table className="table table-striped ">
+      <table className="table table-striped">
         <tbody ref={this.myRef}>
+        <caption class="text-center tablemin-title">ESCOGER HORARIO</caption>
           <tr>
             <TrData index={0} isActive={this.state.activeIndex === 0} id={`${this.props.hour}:00 - ${this.props.hour}:10`} onClick={this.click.bind(this)} name={`${this.props.hour}:00 - ${this.props.hour}:10`} />
           </tr>

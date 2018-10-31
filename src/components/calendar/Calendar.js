@@ -11,11 +11,11 @@ class Calendar extends Component {
     }
   }
 
-  componentDidMount() {
-    database.ref('/calendar').once('value').then((snapshot) => {
-      this.setState({ data: snapshot.val() })
-    });
-  }
+ componentDidMount() {
+   database.ref('/calendar').once('value').then((snapshot) => {
+     this.setState({ data: snapshot.val() })
+   });
+ }
 
   render() {
     return (
@@ -51,9 +51,9 @@ class Calendar extends Component {
           </tbody>
         </table>
 
-      </div>
-    );
-  }
+     </div>
+   );
+ }
 
   handleClick(e) {
     e.preventDefault();
