@@ -15,6 +15,9 @@ body {
   border-radius: 1rem;
   width: 100%;
 }
+.table th {
+  text-align: center;
+}
 @media (min-width: 576px) { 
   .form-login {
     border-radius: 1rem;

@@ -19,7 +19,7 @@ class Page404 extends Component {
 
   render() {
     return (
-      <div class="bg-white">
+      <div class="container bg-white">
         <table class="table">
           <thead>
             <tr>
@@ -38,7 +38,7 @@ class Page404 extends Component {
               this.state.data.map((data, i) => {
                 return (
                   <tr>
-                    <th scope="row">{i < 10 ? ('0' + i) : i}:00</th>
+                    <th scope="row">{i < 10 ? ('0' + i) : i}:00 - {(i+1) < 10 ? ('0' + (i+1)) : (i+1)}:00</th>
                     {
                       arrayDay.map(day => {
                         return (<td><a href="#" id={i + "-" + day + "-" + data[day].name + "-" + data[day].price} onClick={this.handleClick.bind(this)}>{data[day].name}</a></td>)
