@@ -22,47 +22,47 @@ class Form extends Component {
       <div>
         <form>
           <Mini hour={this.props.hour} />
-          <div className="form-group">
-            <label for="exampleSelect1" className="bmd-label-floating">Producto</label>
-            <select className="form-control" id="exampleSelect1">
+          <div class="form-group">
+            <label for="exampleSelect1" class="bmd-label-floating">Producto</label>
+            <select class="form-control" id="exampleSelect1">
               {this.state.products.map(element => {
                 return (<option>{element.name}</option>)
               })}
             </select>
           </div>
-          <div className="form-group">
-            <label for="exampleSelect2" className="bmd-label-floating">Programa</label>
-            <input type="name" classNameName="form-control" disabled>{this.props.name}</input>
+          <div class="form-group">
+            <label  class="bmd-label-floating">Programa</label>
+            <input type="text" class="form-control" value={this.props.name}/>
           </div>
-          <div className="form-group">
-            <label for="exampleTextarea" className="bmd-label-floating">Fecha</label>
-            <input type="name" classNameName="form-control" disabled>{this.props.day} {this.props.hour}</input>
+          <div class="form-group">
+            <label class="bmd-label-floating">Fecha</label>
+            <input type="text" class="form-control" value={this.props.day}/>
           </div>
-          <div className="form-group">
-            <label for="exampleInputFile" className="bmd-label-floating">Monto por producto</label>
-            <input type="name" classNameName="form-control" disabled>---</input>
+          <div class="form-group">
+            <label  class="bmd-label-floating">Monto por producto</label>
+            <input type="text" class="form-control" value="---" />
           </div>
-          <div className="form-group">
-            <label for="exampleInputFile" className="bmd-label-floating">Monto por programa</label>
-            <input type="name" classNameName="form-control" disabled>{this.props.price}</input>
+          <div class="form-group">
+            <label class="bmd-label-floating">Monto por programa</label>
+            <input type="text" class="form-control" value={this.props.price} />
           </div>
-          <div className="form-group">
-            <label for="exampleInputFile" className="bmd-label-floating">Monto por recargo</label>
-            <input type="name" classNameName="form-control" disabled>---</input>
+          <div class="form-group">
+            <label  class="bmd-label-floating">Monto por recargo</label>
+            <input type="text" class="form-control" value="---"/>
           </div>
-          <div className="form-group">
-            <label for="exampleInputFile" className="bmd-label-floating">Monto total</label>
-            <input type="name" classNameName="form-control" disabled>---</input>
+          <div class="form-group">
+            <label  class="bmd-label-floating">Monto total</label>
+            <input type="text" class="form-control" value="---"/>
           </div>
           
           
-          <div className="checkbox">
+          <div class="checkbox">
             <label>
               <input type="checkbox" /> Acepto los términos y condiciones 
             </label>
           </div>
-          <button className="btn btn-default">Cancelar</button>
-          <button type="submit" className="btn btn-primary btn-raised">Enviar</button>
+          <button class="btn btn-default">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-raised">Submit</button>
         </form>
       </div>
     );

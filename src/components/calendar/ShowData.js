@@ -15,7 +15,7 @@ class ShowData extends Component {
   }
   render() {
     return (
-      <div className="row">
+      <div className="row row-table">
         {this.state.status ? (<Form status={this.state.status} handleChangeStatus={this.handleChangeStatus.bind(this)} hour={this.state.hour} day={this.state.day} name={this.state.name} price={this.state.price}/>) : (<Calendar status={this.state.status} handleChangeStatus={this.handleChangeStatus.bind(this)} handleGoForm={this.handleGoForm.bind(this)}/>)}
       </div>
     );

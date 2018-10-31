@@ -20,7 +20,7 @@ class SignIn extends Component {
         <h3 className="">Conectémonos+</h3>
         <p className="">EQUIPO COMERCIAL/CLIENTES</p>
         <form className="bg-white text-black p-3 form-login needs-validation" onSubmit={this.handleSubmit.bind(this)} novalidate>
-          <img src="http://www.comercial.americatv.com.pe/images/load-america.gif" className="rounded mx-auto d-block" alt="logo" />
+          <img src="http://www.comercial.americatv.com.pe/images/load-america.gif" className="rounded mx-auto d-block img-login" alt="logo" />
           <div className="form-group">
             <label for="email" className="bmd-label-floating">Coreo electronico</label>
             <input type="email" className="form-control" id="email" value={this.state.email} onChange={this.handleChange.bind(this)} required />
