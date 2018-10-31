@@ -5,7 +5,8 @@ class MiniCalendar extends Component {
     super();
     this.state = {
       activeIndex: null,
-      clicked: null
+      clicked: null,
+      array: []
     }
     this.myRef = React.createRef();
 
@@ -18,15 +19,20 @@ class MiniCalendar extends Component {
     if (this.props.booking.clickedTH) {
       Object.values(this.myRef.current.children).forEach(ref => {
         if (ref.textContent === this.props.booking.schedule) {
+          const { array } = this.state;
+          array.push({ ref: ref });
+          this.setState({ array: array })
           ref.className = "desactive";
           ref.innerHTML = "<th>No disponible</th>";
         }
       })
+      this.props.handleGetLength(this.state.array.length);
     }
+
     return (
       <table className="table table-striped">
         <tbody ref={this.myRef}>
-        <caption class="text-center tablemin-title">ESCOGER HORARIO</caption>
+          <caption class="text-center tablemin-title">ESCOGER HORARIO</caption>
           <tr>
             <TrData index={0} isActive={this.state.activeIndex === 0} id={`${this.props.hour}:00 - ${this.props.hour}:10`} onClick={this.click.bind(this)} name={`${this.props.hour}:00 - ${this.props.hour}:10`} />
           </tr>

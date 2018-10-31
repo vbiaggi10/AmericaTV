@@ -33,6 +33,7 @@ class Form extends Component {
         }
       })
     });
+
     const hour = parseInt(this.props.hour);
     if (hour >= 12 && hour < 16) {
       this.setState({ surchargeAmount: this.props.price * 0.05 });
@@ -47,7 +48,7 @@ class Form extends Component {
     return (
       <div>
         <form className="form-data p-5" onSubmit={this.handleSubmit.bind(this)}>
-          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)} booking={this.state.booking} />
+          <Mini hour={this.props.hour} handleClick={this.handleClick.bind(this)} booking={this.state.booking} handleGetLength={this.handleGetLength.bind(this)}/>
           <div className="form-group">
             <label htmlFor="exampleSelect1" className="bmd-label-floating mb-0">
               Producto
@@ -75,7 +76,7 @@ class Form extends Component {
               Debes ingresar un producto
             </div>
           </div>
-          <section class="section-disabled">
+          <section className="section-disabled">
           <div className="input-group mb-3">
             <label className="bmd-label-floating lb-nop">Programa: </label>
             <input
@@ -98,8 +99,8 @@ class Form extends Component {
             <label className="bmd-label-floating lb-nop">
               Monto por producto:{" "}
             </label>
-            <div class="input-group-prepend">
-              <p class="input-group-text">$</p>
+            <div className="input-group-prepend">
+              <p className="input-group-text">$</p>
             </div>
             <input
               type="text"
@@ -112,8 +113,8 @@ class Form extends Component {
             <label className="bmd-label-floating lb-nop">
               Monto por programa:{" "}
             </label>
-            <div class="input-group-prepend">
-              <p class="input-group-text">$</p>
+            <div className="input-group-prepend">
+              <p className="input-group-text">$</p>
             </div>
             <input
               type="text"
@@ -126,8 +127,8 @@ class Form extends Component {
             <label className="bmd-label-floating lb-nop">
               Monto por recargo:{" "}
             </label>
-            <div class="input-group-prepend">
-              <p class="input-group-text">$</p>
+            <div className="input-group-prepend">
+              <p className="input-group-text">$</p>
             </div>
             <input
               type="text"
@@ -138,8 +139,8 @@ class Form extends Component {
           </div>
           <div className="input-group mb-3">
             <label className="bmd-label-floating lb-nop">Monto total: </label>
-            <div class="input-group-prepend">
-              <p class="input-group-text">$</p>
+            <div className="input-group-prepend">
+              <p className="input-group-text">$</p>
             </div>
             <input
               type="text"
@@ -200,7 +201,8 @@ class Form extends Component {
           surchargePrice: this.state.surchargeAmount,
           schedule: this.state.schedule,
           totalPrice: this.myRef.current.value,
-          clickedTH: this.state.clickedTH
+          clickedTH: this.state.clickedTH,
+          idCalendar: this.props.idCalendar
         });
         this.props.handleChangeStatus(false);
       } else {
@@ -214,7 +216,13 @@ class Form extends Component {
     e.preventDefault();
     e.stopPropagation();
     this.props.handleChangeStatus(false);
+  }
 
+  handleGetLength(length){
+    console.log(length)
+    if(length === 6){
+      this.props.handleGetLength(true)
+    }
   }
 }
 export default Form;
