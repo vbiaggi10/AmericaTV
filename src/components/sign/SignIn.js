@@ -36,7 +36,7 @@ class SignIn extends Component {
           </div>
           </div>
           <div className="form-group m-0 d-flex justify-content-center">
-            <button type="submit" className="btn btn-primary" id="submit">Ingresar</button>
+            <button type="submit" className="btn btn-raised btn-success btn-login" id="submit">Ingresar</button>
           </div>
         </form>
       </div>
