@@ -22,17 +22,17 @@ class SignIn extends Component {
         <form className="bg-white text-black p-3 form-login needs-validation" onSubmit={this.handleSubmit.bind(this)} novalidate>
           <img src="http://www.comercial.americatv.com.pe/images/load-america.gif" className="rounded mx-auto d-block img-login" alt="logo" />
           <div className="form-group">
-            <label for="email" className="bmd-label-floating">Coreo electronico</label>
+            <label for="email" className="bmd-label-floating">Correo electrónico</label>
             <input type="email" className="form-control" id="email" value={this.state.email} onChange={this.handleChange.bind(this)} required />
             <div className="invalid-feedback text-danger" id="if1">
-              Email invalido
+              Email inválido
           </div>
           </div>
           <div className="form-group">
             <label for="password" className="bmd-label-floating">Contraseña</label>
             <input type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange.bind(this)} required />
             <div className="invalid-feedback text-danger" id="if2">
-              Contraseña invalida
+              Contraseña inválida
           </div>
           </div>
           <div className="form-group m-0 d-flex justify-content-center">

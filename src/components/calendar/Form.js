@@ -42,6 +42,9 @@ class Form extends Component {
                 return (<option key={`products${i}`} value={element.price + "-" + element.name}>{element.name}</option>)
               })}
             </select>
+            <div className="invalid-feedback text-danger" id="if3">
+              Debes ingresar un producto
+          </div>
           </div>
           <div className="form-group">
             <label className="bmd-label-floating">Programa</label>
@@ -69,7 +72,7 @@ class Form extends Component {
           </div>
           <div className="form-check">
             <label>
-              <input type="checkbox" className="form-check-input" caria-label="Checkbox for following text input" /> Acepto los términos y condiciones
+              <input type="checkbox" className="form-check-input" caria-label="Checkbox for following text input" required/> Acepto los términos y condiciones
             </label>
           </div>
           <button type="submit" className="btn btn-raised btn-warning btn-login" name="cancel">Cancelar</button>
@@ -79,8 +82,10 @@ class Form extends Component {
     );
   }
   handleChange(e) {
+    const if3= document.querySelector('#if3');
     const newTarget = e.target.value.split('-');
     this.setState({ productPrice: parseInt(newTarget[0]), productName: newTarget[1] });
+    if3.style.display="none";  
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -94,7 +99,8 @@ class Form extends Component {
         totalPrice: this.myRef.current.value
       });
     } else {
-      alert("seleccionar producto")
+      const if3= document.querySelector('#if3');
+      if3.style.display="block";
     }
   }
 }
