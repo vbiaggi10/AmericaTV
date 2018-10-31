@@ -6,7 +6,7 @@ class Header extends Component {
       <div className="header">
         <header>
           <nav class="navbar navbar-light bg-light nav-login">
-            <a class="navbar-brand text-white" href="#">
+            <a class="navbar-brand text-white" href="AmericaTV">
               <img src="../../img/logo_header.png" width="30" height="30" class="d-inline-block align-top" alt="" />
               AMÉRICA COMERCIAL
             </a>

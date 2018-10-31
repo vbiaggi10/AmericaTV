@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SignIn from '../sign/SignIn';
-import Calendar from '../calendar/Calendar';
+import ShowData from '../calendar/ShowData';
 
 class Home extends Component {
   constructor(){
@@ -12,7 +12,7 @@ class Home extends Component {
   render() {
     return (
       <div className="row">
-        {this.state.status ? (<Calendar/>) : (<SignIn status={this.state.status} handleChangeStatus={this.handleChangeStatus.bind(this)}/>)}
+        {this.state.status ? (<ShowData/>) : (<SignIn status={this.state.status} handleChangeStatus={this.handleChangeStatus.bind(this)}/>)}
       </div>
     );
   }
