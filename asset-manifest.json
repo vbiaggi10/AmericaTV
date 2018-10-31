@@ -1,15 +1,15 @@
 {
-  "main.css": "/AmericaTV/static/css/main.8ef0c23c.chunk.css",
-  "main.js": "/AmericaTV/static/js/main.72dad3da.chunk.js",
-  "main.js.map": "/AmericaTV/static/js/main.72dad3da.chunk.js.map",
+  "main.css": "/AmericaTV/static/css/main.20a27f70.chunk.css",
+  "main.js": "/AmericaTV/static/js/main.d7213747.chunk.js",
+  "main.js.map": "/AmericaTV/static/js/main.d7213747.chunk.js.map",
   "static/js/1.bc0be270.chunk.js": "/AmericaTV/static/js/1.bc0be270.chunk.js",
   "static/js/1.bc0be270.chunk.js.map": "/AmericaTV/static/js/1.bc0be270.chunk.js.map",
   "runtime~main.js": "/AmericaTV/static/js/runtime~main.20838076.js",
   "runtime~main.js.map": "/AmericaTV/static/js/runtime~main.20838076.js.map",
-  "static/css/main.8ef0c23c.chunk.css.map": "/AmericaTV/static/css/main.8ef0c23c.chunk.css.map",
+  "static/css/main.20a27f70.chunk.css.map": "/AmericaTV/static/css/main.20a27f70.chunk.css.map",
   "static/media/frame.svg": "/AmericaTV/static/media/frame.0e6c3d75.svg",
   "static/media/App.css": "/AmericaTV/static/media/fondo3.cf040d75.jpg",
   "index.html": "/AmericaTV/index.html",
-  "precache-manifest.bb236bf945c1ebe05f80fb51c503de72.js": "/AmericaTV/precache-manifest.bb236bf945c1ebe05f80fb51c503de72.js",
+  "precache-manifest.15f13418680262b86b70f8bc60ea5cab.js": "/AmericaTV/precache-manifest.15f13418680262b86b70f8bc60ea5cab.js",
   "service-worker.js": "/AmericaTV/service-worker.js"
 }

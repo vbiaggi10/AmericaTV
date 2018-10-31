@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/AmericaTV/precache-manifest.bb236bf945c1ebe05f80fb51c503de72.js"
+  "/AmericaTV/precache-manifest.15f13418680262b86b70f8bc60ea5cab.js"
 );
 
 workbox.clientsClaim();

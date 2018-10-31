@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/AmericaTV/static/js/runtime~main.20838076.js"
   },
   {
-    "revision": "72dad3dabceca3804fce",
-    "url": "/AmericaTV/static/js/main.72dad3da.chunk.js"
+    "revision": "d7213747ebe9b25e9cc7",
+    "url": "/AmericaTV/static/js/main.d7213747.chunk.js"
   },
   {
     "revision": "bc0be2705619fde3cf22",
     "url": "/AmericaTV/static/js/1.bc0be270.chunk.js"
   },
   {
-    "revision": "72dad3dabceca3804fce",
-    "url": "/AmericaTV/static/css/main.8ef0c23c.chunk.css"
+    "revision": "d7213747ebe9b25e9cc7",
+    "url": "/AmericaTV/static/css/main.20a27f70.chunk.css"
   },
   {
-    "revision": "58e105c05f0e66880917f5d93606230e",
+    "revision": "9496c3ab3772b295bf3578ca15c95d1d",
     "url": "/AmericaTV/index.html"
   }
 ];
